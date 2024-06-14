@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import CustomBox from "./CustomBox";
 import { space, color, layout, border, flexbox } from "styled-system";
-import { Search } from '@styled-icons/material/Search';
+import SearchIcon from '@mui/icons-material/Search';
 
 export const Spacebetween = styled(CustomBox)`
   display: flex;
@@ -66,7 +66,7 @@ export const SearchInput = styled.input`
   ${layout}
 `;
 
-export const SearchIconStyled = styled(Search)`
+export const SearchIconStyled = styled(SearchIcon)`
   color: gray;
   font-size: 24;
   ${color}

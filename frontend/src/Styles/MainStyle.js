@@ -2,6 +2,9 @@ import styled from "@emotion/styled";
 import CustomBox from "./CustomBox";
 import { space, color, layout, border, flexbox } from "styled-system";
 import backgroundImage from "/images/OIP.jpg";
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 export const HomeContainer = styled(CustomBox)`
   display: flex;
@@ -60,7 +63,7 @@ export const Spacearound = styled(CustomBox)`
 export const Info = styled(CustomBox)`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 27px;
   ${flexbox}
 `;
 export const Flex = styled(CustomBox)`
@@ -79,7 +82,7 @@ export const Center = styled(CustomBox)`
 
 export const RowGap40 = styled(CustomBox)`
   display: flex;
-  // justify-content: center;
+  justify-content: center;
   align-items: center;
   gap: 80px;
   margin-bottom: 80px;
@@ -131,7 +134,7 @@ export const Submit = styled.button`
     @media (max-width: 768px) {
       height: 45px;
     }`
-export const Clear = styled.button`
+export const CLEAR = styled.button`
    width: 100%
     padding: 20px;
     height: 45px;
@@ -142,3 +145,24 @@ export const Clear = styled.button`
     @media (max-width: 768px) {
       height: 40px;
     }`
+
+  export const LoadingContainer = styled(CustomBox)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: white;
+`;
+export const Edit = styled(EditIcon)`
+  height: 45px;
+  width: 50px;
+  color: #0d7ae6;
+  cursor:pointer;
+`
+export const Delete = styled(DeleteIcon)`
+   height: 45px;
+  width: 50px;
+  color: #991010;
+    cursor:pointer;
+
+`

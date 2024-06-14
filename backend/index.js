@@ -12,8 +12,11 @@ const port = process.env.PORT;
 const MongoDBURL = process.env.CONNECTION_URL;
 
 //middleware
-app.use(express.json());
-app.use(cors());
+app.use(express.json({ limit: '10mb' })); // Adjust the limit as needed
+app.use(cors({
+  origin: '*'
+}));
+
 
 app.get('/', (req, res) =>{
   console.log(req)

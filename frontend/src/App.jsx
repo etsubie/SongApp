@@ -69,10 +69,11 @@ const MainContentWithSidebar = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/all" element={<Songs />} />
-          <Route path="/id" element={<Detials />} />
+          <Route path="/:id" element={<Detials />} />
           <Route path="/year" element={<Years />} />
           <Route path="/genre" element={<Genres />} />
           <Route path="/create" element={<Form />} />
+          <Route path="/:id" element={<Form />} />
         </Routes>
       </MainContent>
       {!hideSidebar && <Sidebar flex="2"><Rightside/></Sidebar>}
