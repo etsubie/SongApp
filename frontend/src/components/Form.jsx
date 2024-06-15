@@ -27,7 +27,7 @@ const Form = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
   const song = useSelector((state) => state.songs.list);
-  const genres = ["rock", "traditional", "hip hop", "reggae", "pop"];
+  const genres = ["rock", "traditional", "hip hop", "reggae", "pop", 'others'];
   const [formData, setFormData] = useState({
     title: "",
     publishYear: "",

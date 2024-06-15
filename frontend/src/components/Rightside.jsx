@@ -39,9 +39,9 @@ return (
       <StyledLink key={song._id} to={`/${song._id}`}>
         <CustomCard>
           <StyledImg src={song.imgUrl || ' /images/OIP.jpg'} />
-          <Title>{song.title}</Title>
+          <Title>{song.title.charAt(0).toUpperCase()+song.title.slice(1)}</Title>
           <Year>{song.publishYear}</Year>
-        </CustomCard>{" "}
+        </CustomCard>
       </StyledLink>
     ))}
   </Sidecontainer>
