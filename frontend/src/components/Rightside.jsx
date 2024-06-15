@@ -1,36 +1,50 @@
-import React from 'react'
-import { Sidecontainer, CustomBar, CustomCard, StyledImg, Title, Year } from '../Styles/SideStyle'
-import { Semibold } from '../Styles/MainStyle'
-import { StyledLink } from '../Styles/Link'
+import React, { useEffect } from "react";
+import {
+  Sidecontainer,
+  CustomBar,
+  CustomCard,
+  StyledImg,
+  Title,
+  Year,
+} from "../Styles/SideStyle";
+import { LoadingContainer, Semibold } from "../Styles/MainStyle";
+import { StyledLink } from "../Styles/Link";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchSongsRequest } from "../redux/songsSlice";
 
 const Rightside = () => {
-  return (
-    <Sidecontainer>
-      <Semibold>Recent Songs</Semibold>
-      <CustomBar/>
-        <StyledLink to='/id'>
-        <CustomCard>
-        <StyledImg src='/images/OIP.jpg'/>
-          <Title>Brofk</Title>
-          <Year>1656</Year>
-        </CustomCard>
-        </StyledLink>
-        <StyledLink to='/id'>
-        <CustomCard>
-          <StyledImg src='/images/OIP.jpg'/>
-          <Title>Brofk</Title>
-          <Year>1656</Year>
-        </CustomCard>
-        </StyledLink>
-        <StyledLink to='/id'>
-        <CustomCard>
-        <StyledImg src='/images/OIP.jpg'/>
-          <Title>Brofk</Title>
-          <Year>1656</Year>
-        </CustomCard>
-        </StyledLink>
-    </Sidecontainer>
-  )
-}
+  const songs = useSelector((state) => state.songs.list);
+  const loading = useSelector((state) => state.songs.loading);
+  const dispatch = useDispatch();
 
-export default Rightside
+  const sortedSongs = songs.slice(0,3).sort((a, b) => new Date(b.publishYear) - new Date(a.publishYear));
+
+  useEffect(() => {
+    dispatch(fetchSongsRequest());
+  }, [dispatch]);
+
+  if (loading) {
+    return (
+      <LoadingContainer>
+        <p>loading...</p>
+      </LoadingContainer>
+    );
+  }
+
+return (
+  <Sidecontainer>
+    <Semibold>Recent Songs</Semibold>
+    <CustomBar />
+    {sortedSongs.map((song) => (
+      <StyledLink key={song._id} to={`/${song._id}`}>
+        <CustomCard>
+          <StyledImg src={song.imgUrl || ' /images/OIP.jpg'} />
+          <Title>{song.title}</Title>
+          <Year>{song.publishYear}</Year>
+        </CustomCard>{" "}
+      </StyledLink>
+    ))}
+  </Sidecontainer>
+);
+}
+export default Rightside;

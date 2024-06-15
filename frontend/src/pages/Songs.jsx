@@ -26,7 +26,6 @@ const Songs = () => {
   if (loading) {
     return (
       <LoadingContainer>
-        {/* <CircularProgress /> */}
         <p>loading...</p>
       </LoadingContainer>
     );

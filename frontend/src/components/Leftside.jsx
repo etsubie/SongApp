@@ -6,12 +6,13 @@ const Leftside = () => {
   return (
     <Sidecontainer>
       <Heading>Categories</Heading>
+      <StyledLink to="/all">
+        <Subheading>All</Subheading>
+      </StyledLink>
       <StyledLink to="/genre">
-        {" "}
         <Subheading>Genre</Subheading>
       </StyledLink>
       <StyledLink to="/year">
-        {" "}
         <Subheading>Year</Subheading>
       </StyledLink>
       <StyledLink to='/create'>

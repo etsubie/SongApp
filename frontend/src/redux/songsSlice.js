@@ -19,6 +19,17 @@ const songsSlice = createSlice({
       state.loading = false;
       state.error = action.payload;
     },
+    fetchSongByIdRequest: (state) => {
+      state.loading = true;
+    },
+    fetchSongByIdSuccess: (state, action) => {
+      state.loading = false;
+      state.song = action.payload;
+    },
+    fetchSongByIdFailure: (state, action) => {
+      state.loading = false;
+      state.error = action.payload;
+    },
     createSongRequest: (state) => {
       state.loading = true;
     },
@@ -71,6 +82,9 @@ export const {
   deleteSongRequest,
   deleteSongSuccess,
   deleteSongFailure,
+  fetchSongByIdFailure,
+  fetchSongByIdRequest,
+  fetchSongByIdSuccess,
 } = songsSlice.actions;
 
 export default songsSlice.reducer;

@@ -29,7 +29,6 @@ export const CustomCard = styled(CustomBox)`
   ${layout}
 
   `
-  
   export const CustomBar = styled.hr`
       width: 300px;
       color: white;
@@ -38,11 +37,18 @@ export const CustomCard = styled(CustomBox)`
   `
   export const StyledImg = styled.img`
       width: 100%;
-      height: 250px;
+      height: 200px;
       border: solid 1px white;
       border-radius: 20px;
     ${layout}
   `
+  export const DImg = styled.img`
+  width: 100%;
+  height: 300px;
+  border: solid 1px white;
+  border-radius: 20px;
+${layout}
+`
   export const Title = styled.span`
       font-size: 25px;
       color: white;
