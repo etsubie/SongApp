@@ -8,7 +8,7 @@ import songRouter from "./routes/songRoute.js";
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 const MongoDBURL = process.env.CONNECTION_URL;
 
 //middleware
