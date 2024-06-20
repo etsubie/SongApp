@@ -12,10 +12,11 @@ import { Sidebar } from "./components/Sidebar";
 import Home from "./pages/Home";
 import Leftside from "./components/Leftside";
 import Rightside from "./components/Rightside";
-import Detials from "./components/Detials";
+import Detials from "./components/Details";
 import Genres from "./pages/Genres";
 import Years from "./pages/Years";
 import Form from "./components/Form";
+import Details from "./components/Details";
 
 const theme = {
   breakpoints: ["40em", "52em", "64em"],
@@ -51,7 +52,9 @@ const App = () => (
           <Navbar />
         </Header>
         <CustomBox display="flex" flex="1">
-          <Sidebar flex="1"><Leftside/></Sidebar>
+          <Sidebar flex="1">
+            <Leftside />
+          </Sidebar>
           <MainContentWithSidebar />
         </CustomBox>
       </CustomBox>
@@ -69,14 +72,18 @@ const MainContentWithSidebar = () => {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/all" element={<Songs />} />
-          <Route path="/:id" element={<Detials />} />
+          <Route path="/:id" element={<Details />} />
           <Route path="/year" element={<Years />} />
           <Route path="/genre" element={<Genres />} />
           <Route path="/create" element={<Form />} />
-          <Route path="/:id" element={<Form />} />
+          <Route path="edit/:id" element={<Form />} />
         </Routes>
       </MainContent>
-      {!hideSidebar && <Sidebar flex="2"><Rightside/></Sidebar>}
+      {!hideSidebar && (
+        <Sidebar flex="2">
+          <Rightside />
+        </Sidebar>
+      )}
     </React.Fragment>
   );
 };

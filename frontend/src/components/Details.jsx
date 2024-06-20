@@ -45,10 +45,10 @@ const Details = () => {
     .filter((s) => s.genre === song?.genre && s._id !== id)
     .slice(0, 3);
 
-  const handleEdit = (ID) => {
-    navigate(`/${ID}`);
-    console.log(ID);
-  };
+    const handleEdit = (ID) => {
+      navigate(`edit/${ID}`);
+    };
+    
 
   const handleDelete = (id) => {
     dispatch(deleteSongRequest(id));
