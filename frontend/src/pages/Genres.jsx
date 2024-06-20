@@ -45,6 +45,10 @@ const Genres = () => {
 
   return (
     <Container>
+      {songs.length === 0 ? (
+        <LoadingContainer><p>No songs available</p></LoadingContainer>
+      ) : (
+    <>
       <Flex>
         <Semibold>Songs Grouped by Genre</Semibold>
         <Back />
@@ -79,7 +83,7 @@ const Genres = () => {
             </Row>
           )}
         </Wrap>
-      </Flexstart>
+      </Flexstart></>)}
     </Container>
   );
 };

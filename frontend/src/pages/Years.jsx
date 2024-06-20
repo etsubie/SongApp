@@ -53,7 +53,10 @@ const Years = () => {
 
   return (
     <Container>
-      <Flex>
+    {songs.length === 0 ? (
+      <LoadingContainer><p>No songs available</p></LoadingContainer>
+    ) : (
+  <>      <Flex>
         <Semibold>Songs Grouped by Year</Semibold>
         <Back />
       </Flex>
@@ -72,7 +75,7 @@ const Years = () => {
             </Row>
           ))}
         </Wrap>
-      </Flexstart>
+      </Flexstart></>)}
     </Container>
   );
 };

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'http://localhost:3000/songs' });
+const API = axios.create({ baseURL: 'http://localhost:4001/songs' });
 
 export const getSongsAPI = async () => API.get('/all');
 export const getSongByIdAPI = async (id) => API.get(`/${id}`);

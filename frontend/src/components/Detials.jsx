@@ -47,6 +47,7 @@ const Details = () => {
 
   const handleEdit = (ID) => {
     navigate(`/${ID}`);
+    console.log(ID);
   };
 
   const handleDelete = (id) => {
@@ -73,7 +74,7 @@ const Details = () => {
                 <Subheading>{song.genre.charAt(0).toUpperCase()+song.genre.slice(1)}</Subheading>
               </Column>
               <Column>
-                <Year>Artist: {song.singer.charAt(0).toUpperCase()+song.singer.slice(1)}</Year>
+                <Year>Singer: {song.singer.charAt(0).toUpperCase()+song.singer.slice(1)}</Year>
                 <Year>{moment(song.createdAt).fromNow()}</Year>
               </Column>
               <RowGap40>

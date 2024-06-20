@@ -31,8 +31,12 @@ const Rightside = () => {
     );
   }
 
-return (
-  <Sidecontainer>
+  return (
+    <Sidecontainer>
+      {sortedSongs.length === 0 ? (
+        <LoadingContainer><p>No songs available</p></LoadingContainer>
+      ) : (
+    <>
     <Semibold>Recent Songs</Semibold>
     <CustomBar />
     {sortedSongs.map((song) => (
@@ -43,7 +47,8 @@ return (
           <Year>{song.publishYear}</Year>
         </CustomCard>
       </StyledLink>
-    ))}
+    ))}      </>
+  )}
   </Sidecontainer>
 );
 }
