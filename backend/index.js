@@ -2,7 +2,6 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import path from 'path'
 import songRouter from './routes/songRoute.js';
 
 dotenv.config();
@@ -20,14 +19,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/songs', songRouter);
-// Serve static files from the React app
-const __dirname = path.resolve(); 
-app.use(express.static(path.join(__dirname, 'frontend/dist')));
 
-// Catch-all handler to serve the React app for any request that doesn't match an API route
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend/dist', 'index.html'));
-});
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
