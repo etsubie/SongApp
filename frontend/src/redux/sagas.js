@@ -35,7 +35,8 @@ function* createSongSaga(action) {
 
 function* updateSongSaga(action) {
   try {
-    const response = yield call(updateSongAPI, action.payload);
+    const { id, formData } = action.payload;
+    const response = yield call(updateSongAPI, id, formData);
     yield put(updateSongSuccess(response.data));
   } catch (error) {
     yield put(updateSongFailure(error.message));

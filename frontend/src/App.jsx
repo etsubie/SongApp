@@ -12,7 +12,6 @@ import { Sidebar } from "./components/Sidebar";
 import Home from "./pages/Home";
 import Leftside from "./components/Leftside";
 import Rightside from "./components/Rightside";
-import Detials from "./components/Details";
 import Genres from "./pages/Genres";
 import Years from "./pages/Years";
 import Form from "./components/Form";
@@ -76,7 +75,7 @@ const MainContentWithSidebar = () => {
           <Route path="/year" element={<Years />} />
           <Route path="/genre" element={<Genres />} />
           <Route path="/create" element={<Form />} />
-          <Route path="edit/:id" element={<Form />} />
+          <Route path="update/:id" element={<Form />} />
         </Routes>
       </MainContent>
       {!hideSidebar && (

@@ -26,8 +26,8 @@ const Form = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const dispatch = useDispatch();
-  const song = useSelector((state) => state.songs.list);
-  const genres = ["rock", "traditional", "hip hop", "reggae", "pop", 'others'];
+  const song = useSelector((state) => state.songs.list.find(song => song._id === id)); 
+  const genres = ["rock", "traditional", "hip hop", "reggae", "pop"];
   const [formData, setFormData] = useState({
     title: "",
     publishYear: "",
@@ -45,14 +45,7 @@ const Form = () => {
 
   useEffect(() => {
     if (song && id) {
-      setFormData({
-        title: song.title || "",
-        publishYear: song.publishYear || "",
-        genre: song.genre || "",
-        singer: song.singer || "",
-        imgUrl: song.imgUrl || "",
-        audio: song.audio || "",
-      });
+      setFormData(song);
     }
   }, [song, id]);
 
@@ -69,11 +62,13 @@ const Form = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    
     if (id) {
       dispatch(updateSongRequest({ id, formData }));
     } else {
       dispatch(createSongRequest(formData));
     }
+    
     navigate("/all");
     clearForm();
   };
@@ -84,7 +79,6 @@ const Form = () => {
       <Center>
         <CustomForm onSubmit={handleSubmit}>
           <Center>
-            {" "}
             <BlueText>{id ? "Edit Song" : "Create Song"}</BlueText>
           </Center>
           <Input
@@ -124,22 +118,22 @@ const Form = () => {
             }
           />
           <Filecntr>
-          <label>Image:</label>
-          <FileBase
-            type="file"
-            multiple={false}
-            onDone={({ base64 }) =>
-              setFormData({ ...formData, imgUrl: base64 })
-            }
-          />
+            <label>Image:</label>
+            <FileBase
+              type="file"
+              multiple={false}
+              onDone={({ base64 }) =>
+                setFormData({ ...formData, imgUrl: base64 })
+              }
+            />
           </Filecntr>
           <Filecntr>
-          <label>Audio:</label>
-          <FileBase
-            type="file"
-            multiple={false}
-            onDone={({ base64 }) => setFormData({ ...formData, audio: base64 })}
-          />
+            <label>Audio:</label>
+            <FileBase
+              type="file"
+              multiple={false}
+              onDone={({ base64 }) => setFormData({ ...formData, audio: base64 })}
+            />
           </Filecntr>
           <Submit type="submit">
             <Subheading>{id ? "Update" : "Create"}</Subheading>

@@ -22,7 +22,7 @@ export const Gap20 = styled(CustomBox)`
   gap: 20px;
 
   @media (max-width: 768px) {
-    margin-bottom: 20px;
+    gap: 10px;
   }
 `;
 
@@ -30,6 +30,10 @@ export const Logo = styled.img`
   width: 55px;
   height: auto;
   ${layout}
+
+  @media (max-width: 768px) {
+    width: 40px;
+  }
 `;
 
 export const LogoText = styled.h1`
@@ -38,6 +42,10 @@ export const LogoText = styled.h1`
   color: ${(props) => props.theme.colors.text};
   ${color} 
   ${layout}
+
+  @media (max-width: 768px) {
+    font-size: 25px;
+  }
 `;
 
 export const SearchBox = styled(CustomBox)`
@@ -54,6 +62,10 @@ export const SearchBox = styled(CustomBox)`
   ${layout}
   ${border}
   ${flexbox}
+
+  @media (max-width: 768px) {
+    padding: 5px 15px;
+  }
 `;
 
 export const SearchInput = styled.input`
@@ -64,10 +76,18 @@ export const SearchInput = styled.input`
   ${space}
   ${color}
   ${layout}
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `;
 
 export const SearchIconStyled = styled(SearchIcon)`
   color: gray;
-  font-size: 24;
+  font-size: 24px;
   ${color}
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+  }
 `;

@@ -46,7 +46,7 @@ const Details = () => {
     .slice(0, 3);
 
     const handleEdit = (ID) => {
-      navigate(`edit/${ID}`);
+      navigate(`/update/${ID}`);
     };
     
 

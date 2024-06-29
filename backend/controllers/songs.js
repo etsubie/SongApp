@@ -1,4 +1,3 @@
-import mongoose from "mongoose";
 import songModel from "../models/songModel.js";
 
 export const createSong = async (req, res) => {

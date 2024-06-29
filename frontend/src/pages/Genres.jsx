@@ -69,19 +69,6 @@ const Genres = () => {
               </Row>
             )
           ))}
-          {/* Render "Others" category if it exists */}
-          {groupedSongs["Others"] && groupedSongs["Others"].length > 0 && (
-            <Row key="Others">
-              <Column>
-                <BlueText>Others</BlueText>
-                <Wrap>
-                  {groupedSongs["Others"].map((song) => (
-                    <Song key={song._id} song={song} />
-                  ))}
-                </Wrap>
-              </Column>
-            </Row>
-          )}
         </Wrap>
       </Flexstart></>)}
     </Container>
