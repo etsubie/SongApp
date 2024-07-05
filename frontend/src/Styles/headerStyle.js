@@ -8,11 +8,6 @@ export const Spacebetween = styled(CustomBox)`
   justify-content: space-between;
   align-items: center;
   ${flexbox}
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    text-align: center;
-  }
 `;
 
 export const Gap20 = styled(CustomBox)`
