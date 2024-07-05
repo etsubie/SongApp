@@ -487,11 +487,6 @@ object-assign
   justify-content: space-between;
   align-items: center;
   ${Ee}
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-    text-align: center;
-  }
 `,QM=q(Fe)`
   display: flex;
   justify-content: center;
