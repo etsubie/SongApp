@@ -2,13 +2,14 @@ import React, { useEffect } from "react";
 import {
   Container,
   Flex,
-  Flexstart,
   Semibold,
   Wrap,
   LoadingContainer,
   Column,
   Row,
-  BlueText, 
+  BlueText,
+  Center,
+  Flexstart, 
 } from "../Styles/MainStyle";
 import Song from "../components/Song";
 import Back from "../components/Back";

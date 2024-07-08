@@ -80,6 +80,7 @@ export const SearchInput = styled.input`
 export const SearchIconStyled = styled(SearchIcon)`
   color: gray;
   font-size: 24px;
+  cursor: pointer;
   ${color}
 
   @media (max-width: 768px) {

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ThemeProvider } from "@emotion/react";
 import { Global, css } from "@emotion/react";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
@@ -34,34 +34,40 @@ const theme = {
     muted: "#f6f6f6",
   },
 };
+
 const globalStyles = css`
   * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
   }
 `;
 
-const App = () => (
-  <ThemeProvider theme={theme}>
-    <BrowserRouter>
-      <Global styles={globalStyles} />
-      <CustomBox display="flex" flexDirection="column" minHeight="100vh">
-        <Header>
-          <Navbar />
-        </Header>
-        <CustomBox display="flex" flex="1">
-          <Sidebar flex="1">
-            <Leftside />
-          </Sidebar>
-          <MainContentWithSidebar />
-        </CustomBox>
-      </CustomBox>
-    </BrowserRouter>
-  </ThemeProvider>
-);
+const App = () => {
+  const [searchTerm, setSearchTerm] = useState("");
 
-const MainContentWithSidebar = () => {
+  return (
+    <ThemeProvider theme={theme}>
+      <BrowserRouter>
+        <Global styles={globalStyles} />
+        <CustomBox display="flex" flexDirection="column" minHeight="100vh">
+          <Header>
+            <Navbar setSearchTerm={setSearchTerm} />
+          </Header>
+          <CustomBox display="flex" flex="1">
+            <Sidebar flex="1">
+              <Leftside />
+            </Sidebar>
+            <MainContentWithSidebar searchTerm={searchTerm} />
+          </CustomBox>
+        </CustomBox>
+      </BrowserRouter>
+    </ThemeProvider>
+  );
+};
+
+const MainContentWithSidebar = ({ searchTerm }) => {
   const location = useLocation();
   const hideSidebar = location.pathname !== "/";
 
@@ -70,12 +76,12 @@ const MainContentWithSidebar = () => {
       <MainContent flex={hideSidebar ? "6" : "5"}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/all" element={<Songs />} />
+          <Route path="/all" element={<Songs searchTerm={searchTerm} />} />
           <Route path="/:id" element={<Details />} />
           <Route path="/year" element={<Years />} />
           <Route path="/genre" element={<Genres />} />
           <Route path="/create" element={<Form />} />
-          <Route path="update/:id" element={<Form />} />
+          <Route path="/update/:id" element={<Form />} />
         </Routes>
       </MainContent>
       {!hideSidebar && (

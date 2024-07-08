@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import Song from "../components/Song";
 import { useDispatch, useSelector } from "react-redux";
 import {
+  Center,
   Container,
   Flex,
   Flexstart,
@@ -12,9 +13,8 @@ import {
 import Back from "../components/Back";
 import { fetchSongsRequest } from "../redux/songsSlice";
 import CustomBox from "../Styles/CustomBox";
-import { CircularProgress } from "@mui/material";
 
-const Songs = () => {
+const Songs = ({ searchTerm }) => {
   const songs = useSelector((state) => state.songs.list);
   const loading = useSelector((state) => state.songs.loading);
   const dispatch = useDispatch();
@@ -31,7 +31,11 @@ const Songs = () => {
     );
   }
 
-  const sortedSongs = songs.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  const filteredSongs = songs.filter(song =>
+    song.title.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+
+  const sortedSongs = filteredSongs.slice().sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
 
   return (
     <Container>

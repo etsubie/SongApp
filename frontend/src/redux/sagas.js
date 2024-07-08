@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import { getSongsAPI, createSongAPI, updateSongAPI, deleteSongByIdAPI } from '../api/index';
+import { getSongsAPI, createSongAPI, updateSongAPI, deleteSongByIdAPI, getSongByIdAPI } from '../api/index';
 import {
   fetchSongsRequest,
   fetchSongsSuccess,
@@ -13,8 +13,19 @@ import {
   deleteSongRequest,
   deleteSongSuccess,
   deleteSongFailure,
+  fetchSongByIdSuccess,
+  fetchSongByIdFailure,
+  fetchSongByIdRequest,
 } from './songsSlice';
-
+  
+function* fetchSongSaga() {
+  try {
+    const response = yield call(getSongByIdAPI);
+    yield put(fetchSongByIdSuccess(response.data));
+  } catch (error) {
+    yield put(fetchSongByIdFailure(error.message));
+  }
+}
 function* fetchSongsSaga() {
   try {
     const response = yield call(getSongsAPI);
@@ -53,6 +64,7 @@ function* deleteSongSaga(action) {
 }
 
 export function* watchSongs() {
+  yield takeEvery(fetchSongByIdRequest.type, fetchSongSaga)
   yield takeEvery(fetchSongsRequest.type, fetchSongsSaga);
   yield takeEvery(createSongRequest.type, createSongSaga);
   yield takeEvery(updateSongRequest.type, updateSongSaga);

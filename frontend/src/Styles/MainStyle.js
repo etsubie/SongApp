@@ -27,7 +27,7 @@ export const HomeContainer = styled(CustomBox)`
 
 export const HeroText = styled.span`
   color: white;
-  font-size: 70px;
+  font-size: 100px;
 
   @media (max-width: 768px) {
     font-size: 40px;

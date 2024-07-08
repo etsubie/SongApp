@@ -1,7 +1,7 @@
 import songModel from "../models/songModel.js";
 
 export const createSong = async (req, res) => {
-  const { title, genre, imgUrl, audio, singer, publishYear } = req.body;
+  const { title, genre, imgUrl, audio, singer, publishYear , createdAt} = req.body;
 
   const newSong = new songModel({
     title,
@@ -10,6 +10,7 @@ export const createSong = async (req, res) => {
     audio,
     singer,
     publishYear,
+    createdAt:new Date().toISOString()
   });
 
   try {
